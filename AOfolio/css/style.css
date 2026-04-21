@@ -581,6 +581,8 @@ body {
   border-radius: var(--radius-large);
 }
 
+
+
 .about-card .card-title { color: var(--on-surface); }
 
 .about-card .card-text {
@@ -588,6 +590,8 @@ body {
   padding-block: 12px;
   border-block: 1px solid var(--outline-variant);
 }
+
+.about-card .card-text p + p { margin-block-start: 16px; }
 
 .about-list {
   display: grid;

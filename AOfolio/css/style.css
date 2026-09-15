@@ -357,7 +357,21 @@ body {
 
 .section-title { margin-block-end: 16px; }
 
+/*Personal Logo*/
+.personal-logo {
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  color: var(--on-surface);
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
 
+.personal-logo span {
+  color: var(--primary);
+}
 
 /* Button */
 

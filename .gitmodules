@@ -1,0 +1,6 @@
+[submodule "Autofix"]
+	path = Autofix
+	url = https://github.com/Kinggtemp/Rev-Repair.git
+[submodule "Controller-Website"]
+	path = Controller-Website
+	url = https://github.com/Kinggtemp/KingKontroller.com.git

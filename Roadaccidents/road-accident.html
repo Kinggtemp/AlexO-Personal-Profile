@@ -1,41 +1,769 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Road Accident Data Analysis</title>
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+  <!-- # Page metadata and local stylesheet -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Alex Bashford's UWE Bristol road accident analysis: exploratory analysis, statistical testing and decision tree modelling with SPSS and Python."
+    />
+    <meta name="theme-color" content="#101820" />
+    <title>Road Accident Analysis & Prediction — Alex Bashford</title>
+    <link rel="stylesheet" href="./road-accident.css" />
+  </head>
+  <body id="top">
+    <!-- # Accessibility: keyboard shortcut to the main content -->
+    <a class="skip-link" href="#main">Skip to content</a>
+    <!-- # Site header and navigation -->
+    <header class="site-header">
+      <a class="brand" href="../AOfolio/index.html"
+        ><span class="brand-mark">ab.</span>Alex Bashford<span class="accent"
+          >.</span
+        ></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#overview">Overview</a
+        ><a href="#contribution">My contribution</a
+        ><a href="#findings">Findings</a><a href="#model">The model</a
+        ><a href="#documents">Reports</a>
+      </nav>
+      <a class="back-link" href="../AOfolio/index.html">Back to portfolio ↗</a>
+    </header>
+    <main id="main">
+      <!-- # Hero: project title, aim and analysis diagram -->
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="status-dot"></span> DATA SCIENCE CASE STUDY
+            <span>/</span> UWE BRISTOL
+          </p>
+          <h1 id="page-title">
+            Road Accident<br />Analysis &amp;<br /><span>Prediction</span>
+          </h1>
+          <div class="project-aim">
+            <p class="small-label">PROJECT AIM</p>
+            <p class="hero-description">
+              Analyse UK road accident data to identify patterns, understand
+              factors associated with severity, and build a decision tree to
+              classify accidents as slight or severe.
+            </p>
+          </div>
+          <div class="hero-actions">
+            <a class="button primary" href="#findings"
+              >Explore the findings ↘</a
+            ><a
+              class="text-link"
+              href="https://github.com/Kinggtemp/Road-Accidents-Team-Project-UWE"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View on GitHub ↗</a
+            >
+          </div>
+          <div class="tags" aria-label="Project tools">
+            <span>IBM SPSS</span><span>Python</span><span>Decision trees</span
+            ><span>Exploratory analysis</span>
+          </div>
+        </div>
+        <figure class="hero-art" aria-labelledby="analysis-diagram-title">
+          <div class="art-top">
+            <span>THE PROJECT AT A GLANCE</span><span>UK DATA</span>
+          </div>
+          <div class="analysis-diagram">
+            <h2 id="analysis-diagram-title">One dataset. Two questions.</h2>
+            <div class="record-node">
+              <span class="small-label">THE STARTING POINT</span>
+              <h3>UK road accident records</h3>
+              <p>Time, conditions, vehicles &amp; severity</p>
+            </div>
+            <div class="diagram-branches" aria-hidden="true">
+              <span>↓</span><span>↓</span>
+            </div>
+            <div class="analysis-paths">
+              <div class="analysis-path">
+                <span class="small-label">EXPLORE</span>
+                <h3>When do accidents happen?</h3>
+                <p>Find patterns in time, weather and road conditions.</p>
+                <span class="diagram-output"
+                  >Charts &amp; statistical analysis</span
+                >
+              </div>
+              <div class="analysis-path">
+                <span class="small-label">MODEL</span>
+                <h3>How severe are they?</h3>
+                <p>Use a decision tree to classify recorded accidents.</p>
+                <span class="diagram-output">Slight or severe</span>
+              </div>
+            </div>
+          </div>
+          <figcaption class="diagram-caption">
+            A summary of the analysis approach: explore accident patterns and
+            model severity.
+          </figcaption>
+        </figure>
+      </section>
+      <!-- # Project context at a glance -->
+      <div class="project-strip">
+        <div>
+          <span class="small-label">PROJECT</span
+          ><strong>Road Accident Analysis & Prediction</strong>
+        </div>
+        <div>
+          <span class="small-label">CONTEXT</span
+          ><strong>First-year university team project</strong>
+        </div>
+        <div>
+          <span class="small-label">FOCUS</span
+          ><strong>Patterns, severity & prediction</strong>
+        </div>
+      </div>
+      <!-- # 01. Project overview -->
+      <section id="overview" class="section overview">
+        <div>
+          <p class="eyebrow muted">01 / THE CHALLENGE</p>
+          <h2>Turning complex records<br />into clearer insights.</h2>
+        </div>
+        <div class="overview-body">
+          <p class="lead">
+            When do accidents happen most often — and which factors help explain
+            how severe they are?
+          </p>
+          <p>
+            Our UWE Bristol team combined data preparation, exploratory
+            analysis, statistical testing and a Classification and Regression
+            Tree (CRT) model to investigate UK road accident records.
+          </p>
+        </div>
+      </section>
 
-  <div class="container">
+      <!-- # My contribution: a quick summary followed by the full supplied reflection. -->
+      <section
+        id="contribution"
+        class="contribution"
+        aria-labelledby="contribution-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow muted">MY ROLE / ALEX BASHFORD</p>
+            <h2 id="contribution-title">What I contributed.</h2>
+          </div>
+          <span class="section-note"
+            >Preparation, analysis, modelling &amp; communication</span
+          >
+        </div>
+        <p class="contribution-intro">
+          My work focused on preparing the data, analysing accident patterns and
+          helping develop the SPSS model. I also interpreted the results and
+          explained how the model improved.
+        </p>
+        <div class="contribution-grid">
+          <article>
+            <span class="small-label">01 / DATA PREPARATION</span>
+            <h3>Making the data usable.</h3>
+            <p>
+              I wrote SPSS syntax to import, clean and transform the records,
+              recoded severity, created hour and month variables, and filtered
+              districts with low case counts.
+            </p>
+          </article>
+          <article>
+            <span class="small-label">02 / EXPLORATORY ANALYSIS</span>
+            <h3>Checking patterns with evidence.</h3>
+            <p>
+              I produced graphs and chi-square tests to explore how severity
+              relates to time, weather and urban or rural location.
+            </p>
+          </article>
+          <article>
+            <span class="small-label">03 / MODEL DEVELOPMENT</span>
+            <h3>Looking beyond accuracy.</h3>
+            <p>
+              I helped address a model that predicted only slight accidents,
+              contributing to target recoding and data balancing so it could
+              identify both classes.
+            </p>
+          </article>
+          <article>
+            <span class="small-label">04 / COMMUNICATION &amp; TEAMWORK</span>
+            <h3>Explaining and improving the work.</h3>
+            <p>
+              I interpreted and wrote up the results, collaborated through
+              GitLab, and used feedback to improve the model and how we
+              presented it.
+            </p>
+          </article>
+        </div>
+        <div class="contribution-lesson">
+          <span class="small-label">WHAT I LEARNED</span>
+          <p>
+            A high accuracy score can hide poor detection of severe accidents. I
+            learned to check class balance, support conclusions with statistical
+            evidence, and explain the limitations of the data.
+          </p>
+        </div>
+        <!-- # Native details/summary keeps the full essay accessible without JavaScript. -->
+        <details id="individual-reflection" class="individual-reflection">
+          <summary>
+            Read my individual reflection
+            <span class="reading-time">Full essay · 3 min read</span>
+          </summary>
+          <div class="essay-content">
+            <h3>Individual Reflective Essay</h3>
+            <p>
+              Throughout this project, my main contribution focused on data
+              preparation, exploratory data analysis, and model development
+              using SPSS, as well as interpreting and presenting the results.
+            </p>
+            <p>
+              I worked extensively with SPSS syntax to import, clean, and
+              transform the dataset. This included recoding variables, grouping
+              accident severity into a binary outcome (serious vs slight), and
+              creating new variables such as hour of day and month. I also
+              reduced dataset complexity by filtering local authority districts
+              with low case counts. These steps improved the quality and
+              usability of the dataset for analysis.
+            </p>
+            <p>
+              I carried out exploratory data analysis by producing graphs and
+              statistical tests to identify patterns in accident severity. For
+              example, I analysed accidents across time and used chi-square
+              tests to examine relationships between severity and factors such
+              as weather conditions and urban versus rural locations. This
+              helped me understand how statistical evidence supports conclusions
+              rather than relying only on visual patterns.
+            </p>
+            <p>
+              I was also involved in developing and improving the predictive
+              model. Initially, the model showed high accuracy but predicted all
+              cases as slight accidents. This helped me understand the impact of
+              class imbalance and why accuracy alone can be misleading. To
+              address this, I contributed to recoding the target variable and
+              applying balancing techniques, which improved the model’s ability
+              to classify both slight and serious accidents.
+            </p>
+            <p>
+              In addition, I contributed to interpreting and writing up the
+              model results, explaining the model performance and the reasons
+              behind the improvements made. This helped me develop my ability to
+              clearly communicate technical findings in a structured and
+              understandable way.
+            </p>
+            <p>
+              Working as part of a team improved my collaboration skills. We
+              used GitLab to manage our work, share files, and track progress,
+              ensuring that contributions were organised and tasks were
+              completed efficiently.
+            </p>
+            <p>
+              Feedback played an important role in improving the project.
+              Feedback highlighted issues with model performance and clarity,
+              leading to improvements in both the modelling process and how
+              results were presented. This showed me the importance of refining
+              work based on feedback.
+            </p>
+            <p>
+              There were also ethical considerations in this project. The
+              dataset was publicly available and did not include personal
+              identifiable information, reducing privacy concerns. However, the
+              lack of behavioural variables, such as driver speed or impairment,
+              may limit model accuracy and introduce bias. This highlights the
+              importance of understanding data limitations.
+            </p>
+            <p>
+              Overall, this project improved my skills in data analysis,
+              statistical testing, predictive modelling, and communication. It
+              also highlighted the importance of data quality, critical
+              thinking, and continuous improvement.
+            </p>
+          </div>
+        </details>
+      </section>
 
-    <h1>Road Accident Data Analysis</h1>
+      <!-- # 02. Findings and original SPSS evidence -->
+      <section id="findings" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow muted">02 / EXPLORATORY ANALYSIS</p>
+            <h2>What the data revealed.</h2>
+          </div>
+          <span class="section-note"
+            >Original project outputs. Real observations.</span
+          >
+        </div>
+        <div class="findings-grid">
+          <article class="chart-card">
+            <div class="card-heading">
+              <div>
+                <span class="small-label">TIME OF DAY</span>
+                <h3>The evening peak stands out.</h3>
+              </div>
+              <span class="chart-icon" aria-hidden="true">↗</span>
+            </div>
+            <figure>
+              <a
+                href="./images/hourly-accidents.png"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open original hourly accident chart in a new tab"
+                ><img
+                  src="./images/hourly-accidents.png"
+                  width="850"
+                  height="500"
+                  alt="Hourly accident counts: low overnight, a morning peak at 08:00 and the highest bar at 17:00."
+                  loading="lazy"
+              /></a>
+              <figcaption>
+                Accident frequency by hour · Original SPSS output
+                <span>Click to enlarge ↗</span>
+              </figcaption>
+            </figure>
+            <p>
+              Counts are lowest overnight, increase around the morning commute
+              and reach their highest point at 17:00. This describes accident
+              frequency; traffic exposure would be needed to compare risk per
+              journey.
+            </p>
+          </article>
+          <div class="finding-stack">
+            <article class="insight-card">
+              <span class="small-label">01 — DAILY PATTERNS</span>
+              <h3>Rush hours leave<br />a clear signature.</h3>
+              <p>
+                The morning and late-afternoon peaks suggest a connection with
+                daily travel routines.
+              </p>
+              <span class="insight-number"
+                >16:00–18:00 <small>evening peak window</small></span
+              >
+            </article>
+            <article class="insight-card secondary">
+              <span class="small-label">02 — ENVIRONMENT</span>
+              <h3>Fine weather.<br />Still a high accident count.</h3>
+              <p>
+                The project found many serious accidents in fine weather. Higher
+                counts alone do not establish higher risk: the amount of traffic
+                also matters.
+              </p>
+            </article>
+          </div>
+        </div>
 
-    <p>
-      This project was completed as part of a university group assignment, focusing on analysing UK road accident data to identify patterns and factors influencing accident severity.
-    </p>
-
-    <h2>My Role</h2>
-    <p>
-      I was responsible for data cleaning, exploratory data analysis, and creating visualisations using SPSS. I also contributed to analysing relationships between variables and supporting the development of a decision tree model.
-    </p>
-
-    <h2>Tools Used</h2>
-    <ul>
-      <li>Python</li>
-      <li>SPSS</li>
-      <li>GitLab</li>
-    </ul>
-
-    <h2>Key Insights</h2>
-    <p>
-      Accidents were more frequent during peak traffic hours, and weather conditions showed a relationship with accident severity.
-    </p>
-
-    <h2>Downloads</h2>
-    <a href="../assets/files/road-accident-report.pdf" download>Download Report</a>
-
-  </div>
-
-</body>
+        <!-- # Additional findings: proportions calculated from the source tables -->
+        <div class="evidence-heading">
+          <h3>A closer look at location and speed limits.</h3>
+          <p>
+            Supporting results from the final documentation, based on 304,925
+            records in the displayed SPSS tables.
+          </p>
+        </div>
+        <div class="evidence-grid">
+          <article class="evidence-card">
+            <span class="small-label">LOCATION</span>
+            <h3>A larger severe share in rural areas.</h3>
+            <div class="comparison">
+              <div><span>Rural</span><strong>17.9%</strong></div>
+              <div class="bar-track"><span style="width: 17.9%"></span></div>
+              <div><span>Urban</span><strong>12.7%</strong></div>
+              <div class="bar-track"><span style="width: 12.7%"></span></div>
+            </div>
+            <p>
+              Severe cases as a share of accidents within each location,
+              calculated from the report's grouped severity table: 19,275 of
+              107,725 rural records and 24,963 of 197,200 urban records. Bars
+              use a 0–100% scale.
+            </p>
+            <p class="evidence-note">
+              Reported association: χ²(1) = 1,538.789, p &lt; .001. This is a
+              comparison of recorded accidents, not risk per journey.
+            </p>
+            <a
+              class="evidence-link"
+              href="./images/urban-rural-table.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View original SPSS table ↗</a
+            >
+          </article>
+          <article class="evidence-card">
+            <span class="small-label">ROAD SPEED LIMIT</span>
+            <h3>Higher limits in the severe group.</h3>
+            <div class="speed-comparison">
+              <div>
+                <strong>41.11 <small>mph</small></strong
+                ><span>Severe accidents</span>
+              </div>
+              <div>
+                <strong>38.44 <small>mph</small></strong
+                ><span>Slight accidents</span>
+              </div>
+            </div>
+            <p>
+              The mean posted speed limit was 2.67 mph higher for the severe
+              group. These values describe the roads where accidents were
+              recorded, not how fast the vehicles were travelling.
+            </p>
+            <p class="evidence-note">
+              Source variable: Speed_limit. The grouped SPSS output labels
+              severe cases as “Serious”.
+            </p>
+            <a
+              class="evidence-link"
+              href="./images/speed-limit-table.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View original SPSS output ↗</a
+            >
+          </article>
+        </div>
+      </section>
+      <!-- # 03. Data preparation and modelling process -->
+      <section id="method" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow muted">03 / THE PROCESS</p>
+            <h2>From raw data to a tested model.</h2>
+          </div>
+        </div>
+        <div class="process-grid">
+          <article>
+            <span class="step">01</span>
+            <h3>Prepare</h3>
+            <p>
+              Clean the records and group variables where needed to make the
+              data suitable for analysis.
+            </p>
+            <span class="process-tag">Data preparation</span>
+          </article>
+          <article>
+            <span class="step">02</span>
+            <h3>Explore</h3>
+            <p>
+              Visualise time, weather and vehicle patterns. Use cross-tabulation
+              and hypothesis tests to examine relationships.
+            </p>
+            <span class="process-tag">SPSS + Python</span>
+          </article>
+          <article>
+            <span class="step">03</span>
+            <h3>Rebalance</h3>
+            <p>
+              Address the dominance of slight accidents after early models
+              predicted only the majority class.
+            </p>
+            <span class="process-tag">Class imbalance</span>
+          </article>
+          <article>
+            <span class="step">04</span>
+            <h3>Evaluate</h3>
+            <p>
+              Train a CRT decision tree and compare its classification
+              performance across training and test samples.
+            </p>
+            <span class="process-tag">Model evaluation</span>
+          </article>
+        </div>
+      </section>
+      <!-- # 04. Model performance, experiments and source comparison -->
+      <section id="model" class="section model-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow muted">04 / PREDICTIVE MODELLING</p>
+            <h2>A model you can interpret.</h2>
+          </div>
+          <span class="pill">CRT DECISION TREE</span>
+        </div>
+        <div class="model-intro">
+          <p>
+            The model classifies accidents as <strong>slight</strong> or
+            <strong>severe (fatal or serious)</strong>. Rebalancing the data
+            helped it identify both classes, instead of defaulting to the most
+            common outcome.
+          </p>
+          <div class="metrics">
+            <div>
+              <strong>61.2<span>%</span></strong
+              ><span>Test accuracy · Test 3</span>
+            </div>
+            <div>
+              <strong>64.6<span>%</span></strong
+              ><span>Severe-class recall · Test 3</span>
+            </div>
+          </div>
+        </div>
+        <figure class="tree-figure">
+          <div class="tree-top">
+            <span>Inside the training tree</span
+            ><a
+              href="./images/Trainingdecisiontree.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open full-size image ↗</a
+            >
+          </div>
+          <a
+            class="tree-image"
+            href="./images/Trainingdecisiontree.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open full-size SPSS training decision tree"
+            ><img
+              src="./images/Trainingdecisiontree.png"
+              width="1900"
+              height="538"
+              alt="SPSS training tree: first split on number of vehicles, followed by number of casualties and urban or rural location."
+              loading="lazy"
+          /></a>
+          <figcaption>
+            The first split uses the number of vehicles. Subsequent branches
+            include casualty count and urban or rural location. These are
+            predictive associations, rather than proof of cause.
+          </figcaption>
+        </figure>
+        <div class="model-notes">
+          <div>
+            <span class="small-label">WHAT IMPROVED</span>
+            <h3>Learning beyond the majority class.</h3>
+            <p>
+              Balancing the dataset made severe outcomes more visible to the
+              model. The project reports similar training and test performance,
+              though this alone does not establish performance on new
+              populations.
+            </p>
+          </div>
+          <div>
+            <span class="small-label">HOW TO READ THE RESULT</span>
+            <h3>Useful insight, with clear limits.</h3>
+            <p>
+              Results reflect the balanced study sample. Casualty count is known
+              after a crash, so this is an analysis of recorded accidents, not a
+              validated tool for predicting danger before a journey.
+            </p>
+          </div>
+        </div>
+        <!-- # Three model tests: different sample distributions are not directly comparable -->
+        <div class="model-history">
+          <h3>Why 85% accuracy was not enough.</h3>
+          <ol class="test-timeline">
+            <li>
+              <span class="small-label">TEST 1 · ORIGINAL CHAID MODEL</span>
+              <h4>High accuracy, no severe cases detected.</h4>
+              <p>
+                The model scored about 85% by predicting every accident as
+                slight. Its severe-class recall was 0%.
+              </p>
+            </li>
+            <li>
+              <span class="small-label">TEST 2 · BINARY TARGET</span>
+              <h4>Recoding alone did not solve the problem.</h4>
+              <p>
+                Fatal and serious cases were combined, but the model still
+                predicted only slight accidents.
+              </p>
+            </li>
+            <li>
+              <span class="small-label">TEST 3 · BALANCING + CRT</span>
+              <h4>Both classes became detectable.</h4>
+              <p>
+                All severe cases were retained and slight cases were sampled at
+                approximately 15%. The CRT test output reports 61.2% overall
+                accuracy, 64.6% severe recall and 57.3% slight recall.
+              </p>
+            </li>
+          </ol>
+          <p class="evidence-note">
+            The original and balanced samples have different class proportions,
+            so the two overall accuracy scores are not a like-for-like
+            comparison. The key improvement is detecting both classes.
+          </p>
+          <a
+            class="evidence-link"
+            href="./images/model-test-results.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Inspect the Test 3 classification table ↗</a
+          >
+        </div>
+        <details class="source-note">
+          <summary>Compare the results reported in the documents</summary>
+          <p>
+            The page uses the Test 3 SPSS output in
+            <em>Prediction Model Report</em>, which agrees with the rounded
+            figures in the final documentation.
+            <em>Accident Severity Prediction</em> reports a different set of
+            figures. The supplied documents do not establish why they differ.
+          </p>
+          <div class="results-table-wrap">
+            <table class="results-table">
+              <caption>
+                Reported test results by source
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Document</th>
+                  <th scope="col">Accuracy</th>
+                  <th scope="col">Severe recall</th>
+                  <th scope="col">Slight recall</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Prediction Model Report · Test 3</th>
+                  <td>61.2%</td>
+                  <td>64.6%</td>
+                  <td>57.3%</td>
+                </tr>
+                <tr>
+                  <th scope="row">Accident Severity Prediction</th>
+                  <td>61.6%</td>
+                  <td>67.3%</td>
+                  <td>55.1%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Recall here means the proportion of cases in that observed class
+            that the model classified correctly. These scores describe the study
+            samples, not a validated live prediction service.
+          </p>
+          <a href="#documents">Read the source documents ↓</a>
+        </details>
+      </section>
+      <!-- # 05. Takeaways and future improvements -->
+      <section id="reflection" class="section reflection">
+        <div>
+          <p class="eyebrow muted">05 / THE TAKEAWAY</p>
+          <h2>Better questions.<br />More thoughtful analysis.</h2>
+          <p>
+            This project taught me to look beyond a single accuracy score: check
+            the class balance, explain the patterns and be clear about what a
+            model can actually tell us.
+          </p>
+        </div>
+        <div class="next-steps">
+          <span class="small-label">WHERE I WOULD TAKE IT NEXT</span>
+          <p>
+            <span>01</span> Compare the decision tree with alternative models.
+          </p>
+          <p>
+            <span>02</span> Evaluate on data with the original class
+            distribution.
+          </p>
+          <p>
+            <span>03</span> Explore traffic exposure and behavioural variables.
+          </p>
+        </div>
+      </section>
+      <!-- # 06. Document library: local report page and original Word downloads -->
+      <section
+        id="documents"
+        class="document-library"
+        aria-labelledby="documents-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow muted">06 / SOURCE DOCUMENTS</p>
+            <h2 id="documents-title">Read the work behind the results.</h2>
+          </div>
+          <span class="section-note">Reports, experiments &amp; research</span>
+        </div>
+        <p class="library-intro">
+          The literature review shaped the choice of environmental, road and
+          time variables. The reports show how those ideas became an analysis, a
+          series of model tests and a final evaluation.
+        </p>
+        <div class="document-grid">
+          <article class="document-card">
+            <span class="small-label">01 / COMPLETE PROJECT · WEB</span>
+            <h3>Final project documentation</h3>
+            <p>
+              Scope, preparation, findings, evaluation and personal reflection,
+              with the original figures.
+            </p>
+            <a
+              class="button outline"
+              href="./documents/final-documentation.html"
+              >Read the report ↗</a
+            ><small
+              >Public reading copy; student numbers and peer ratings
+              omitted.</small
+            >
+          </article>
+          <article class="document-card">
+            <span class="small-label">02 / EXPERIMENTS · WORD</span>
+            <h3>Prediction Model Report</h3>
+            <p>
+              Three testing stages, SPSS code and classification tables showing
+              how the model changed.
+            </p>
+            <a
+              class="button outline"
+              href="./documents/prediction-model-report.docx"
+              download
+              >Download testing report ↓</a
+            ><small>Original DOCX · 114 KB</small>
+          </article>
+          <article class="document-card">
+            <span class="small-label">03 / MODEL WRITE-UP · WORD</span>
+            <h3>Accident Severity Prediction</h3>
+            <p>
+              Methodology, interpretation and limitations. Contains a different
+              set of reported model scores.
+            </p>
+            <a
+              class="button outline"
+              href="./documents/accident-severity-prediction.docx"
+              download
+              >Download model write-up ↓</a
+            ><small>Original DOCX · 17 KB</small>
+          </article>
+          <article class="document-card">
+            <span class="small-label">04 / RESEARCH · WORD</span>
+            <h3>Literature review</h3>
+            <p>
+              Research into environment, roads, time and machine learning, with
+              the project's reference list.
+            </p>
+            <a
+              class="button outline"
+              href="./documents/literature-review.docx"
+              download
+              >Download literature review ↓</a
+            ><small>Original DOCX · 21 KB</small>
+          </article>
+        </div>
+      </section>
+      <!-- # Project repository and source code -->
+      <section class="resources">
+        <div>
+          <p class="eyebrow">EXPLORE THE CODE</p>
+          <h2>Follow the analysis.</h2>
+          <p>Browse the SPSS syntax and the team's project repository.</p>
+        </div>
+        <div class="resource-actions">
+          <a
+            class="button primary"
+            href="https://github.com/Kinggtemp/Road-Accidents-Team-Project-UWE"
+            target="_blank"
+            rel="noopener noreferrer"
+            >View project repository ↗</a
+          >
+        </div>
+      </section>
+      <!-- # Team credits -->
+      <div class="credits">
+        <div>
+          <span class="small-label">A COLLABORATIVE PROJECT</span>
+          <p>Alex Bashford · Sam Nganga · Hussein Toppozada</p>
+        </div>
+        <span>UWE Bristol · First-year Data Science</span>
+      </div>
+    </main>
+    <!-- # Footer and back-to-top navigation -->
+    <footer>
+      <a class="brand" href="../AOfolio/index.html"
+        >Alex Bashford<span class="accent">.</span></a
+      ><span>Curiosity, backed by data.</span><a href="#top">Back to top ↑</a>
+    </footer>
+  </body>
 </html>
